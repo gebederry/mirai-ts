@@ -13,3 +13,11 @@ export function getPokeMessage() {
 export function getVoiceMessage() {
   return [Message.Voice(null, null, 'adnd.amr')]
 }
+
+/**
+ * 短视频消息
+ */
+export function getShortVideoMessage() {
+  return [Message.ShortVideo(null, null, 'adnd.bmr')]
+}
+

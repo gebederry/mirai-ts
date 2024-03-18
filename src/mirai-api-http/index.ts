@@ -457,6 +457,27 @@ export class MiraiApiHttp {
   }
 
   /**
+   * 使用此方法上传短视频文件至服务器并返回 VideoId
+   * @param type 当前仅支持 "group"
+   * @param video 短视频文件 fs.createReadStream(voice)
+   * @param thumbnail 短视频缩略图文件 fs.createReadStream(thumbnail)
+   */
+  async uploadShortVideo(type: 'friend' | 'group' | 'temp', video: File, thumbnail: File) {
+    const form = new FormData()
+    form.append('sessionKey', this.sessionKey)
+    form.append('type', type)
+    form.append('video', video)
+    form.append('thumbnail', thumbnail)
+    const { data } = await this.axios.post<
+      FormData,
+      AxiosResponse<Api.Response.UploadShortVideo>
+      >('/uploadShortVideo', form, {
+      headers: form.getHeaders(),
+    })
+    return data
+  }
+
+  /**
    * 文件上传
    * @param type 当前仅支持 "Group"
    * @param target 指定群的群号

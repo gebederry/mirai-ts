@@ -125,6 +125,42 @@ export function Voice(
 }
 
 /**
+ * 需要 mirai-api-http 2.10.0 以上，mirai-console 2.16 以上
+ * 生成短视频消息格式
+ * @param videoId 短视频的 videoId，不为空时将忽略 url, thumbnailUrl 属性
+ * @param url 短视频的 URL，发送时可作网络视频的链接；接收时为腾讯的视频服务器的链接，可用于视频下载
+ * @param thumbnailUrl 短视频的缩略图 URL，同上
+ * @param path 短视频的路径，发送本地视频，相对路径于 `data/net.mamoe.mirai-api-http/videos`
+ * @param thumbnailPath 短视频的缩略图路径，同上
+ * @param base64 短视频的 Base64 编码
+ * @param thumbnailBase64 短视频缩略图的 Base64 编码
+ * @param fileSize 返回的视频文件大小, 发送消息时可以不传
+ */
+export function ShortVideo(
+  videoId: string | null = null,
+  url: string | null = null,
+  thumbnailUrl: string | null = null,
+  path: string | null = null,
+  thumbnailPath: string | null = null,
+  base64: string | null = null,
+  thumbnailBase64: string | null = null,
+  fileSize: number | null = null,
+
+): MessageType.ShortVideo {
+  return {
+    type: 'ShortVideo',
+    videoId,
+    url,
+    thumbnailUrl,
+    path,
+    thumbnailPath,
+    base64,
+    thumbnailBase64,
+    fileSize
+  }
+}
+
+/**
  * 富文本消息（譬如合并转发）
  * @param xml
  */

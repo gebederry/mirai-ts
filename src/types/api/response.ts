@@ -69,6 +69,12 @@ export interface UploadVoice {
   path: string
 }
 
+export interface UploadShortVideo {
+  videoId: string
+  url: string
+  path: string
+}
+
 export type FriendList = ResponseType<Friend[]>
 export type GroupList = ResponseType<Group[]>
 export type MemberList = ResponseType<Member[]>

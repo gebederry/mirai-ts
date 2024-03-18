@@ -171,6 +171,45 @@ export namespace MessageType {
   }
 
   /**
+   * 短视频消息
+   */
+  export interface ShortVideo extends BaseSingleMessage {
+    type: 'ShortVideo'
+    /**
+     * 短视频的 videoId，不为空时将忽略 url 属性
+     */
+    videoId: string | null
+    /**
+     * 短视频的 URL，发送时可作网络视频的链接；接收时为腾讯的视频服务器的链接，可用于视频下载
+     */
+    url: string | null
+    /**
+     * 短视频的缩略图 URL，同上
+     */
+    thumbnailUrl: string | null
+    /**
+     * 短视频的路径，发送本地视频，相对路径于 `data/net.mamoe.mirai-api-http/videos`，也可传入绝对路径。
+     */
+    path: string | null
+    /**
+     * 短视频的缩略图路径，同上
+     */
+    thumbnailPath: string | null
+    /**
+     * 短视频的 Base64 编码
+     */
+    base64: string | null
+    /**
+     * 短视频缩略图的 Base64 编码
+     */
+    thumbnailBase64: string | null
+    /**
+     * 返回的短视频文件大小, 发送消息时可以不传
+     */
+    fileSize?: number | null
+  }
+
+  /**
    * 富文本消息（譬如合并转发）
    */
   export interface Xml extends BaseSingleMessage {

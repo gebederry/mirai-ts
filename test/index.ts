@@ -4,7 +4,7 @@ import path from 'node:path'
 import Mirai from 'mirai-ts'
 import type { MessageType, MiraiApiHttpSetting } from 'mirai-ts'
 import yaml from 'js-yaml'
-import { getPokeMessage, getVoiceMessage } from './message'
+import { getPokeMessage, getVoiceMessage, getShortVideoMessage } from './message'
 import { miraiApiTest } from './api'
 
 import { botQQ } from './config'
@@ -38,6 +38,9 @@ async function app() {
         break
       case 'Voice':
         msgChain = getVoiceMessage()
+        break
+      case 'ShortVideo':
+        msgChain = getShortVideoMessage()
         break
       default:
         msgChain = msg.messageChain
